@@ -13,10 +13,12 @@
     "apollo-server-lambda": "^2.4.8",
     "bufferutil": "^4.0.1",
     "core-js": "^2.6.5",
+    "echarts": "^4.2.1",
     "graphql": "^14.2.1",
     "utf-8-validate": "^5.0.2",
     "vue": "^2.6.6",
-    "vue-apollo": "^3.0.0-beta.11"
+    "vue-apollo": "^3.0.0-beta.11",
+    "vue-echarts": "^4.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",

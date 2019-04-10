@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import { createProvider } from './vue-apollo'
+import "@/plugins/echarts";
 
 Vue.config.productionTip = false
 
