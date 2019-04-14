@@ -82,7 +82,7 @@ export default {
             itemStyle: {
               color: 'green'
             },
-            data: difference.map((d) => d > 0 ? d : '-')
+            data: difference.map((d) => d > 0 ? d.toFixed(2) : '-')
           },
           {
             type: 'bar',
@@ -96,7 +96,7 @@ export default {
             itemStyle: {
               color: 'red'
             },
-            data: difference.map((d) => d < 0 ? d * -1 : '-')
+            data: difference.map((d) => d < 0 ? (d * -1).toFixed(2) : '-')
           }
         ]
       }
