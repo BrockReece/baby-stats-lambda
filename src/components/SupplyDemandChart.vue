@@ -35,13 +35,17 @@ export default {
   computed: {
     chartOptionsBar() {
       const difference = this.baby.babystats.map(s => s.pOz - s.bOz)
-      const reduced = difference.reduce((agg, cur, index) => {
-        const previous = index > 0 ? difference[index - 1] : 0
-        const offset = previous < 0 ? previous : 0
+      const reduced = difference.reduce((agg, cur) => {
+        const offset = cur < 0 ? cur : 0
         const last = agg[agg.length - 1]
-        agg.push(last + cur + offset)
+        last.offset = last.total + offset
+        agg.push({
+            total: Math.max(last.total + cur, 0)
+        })
         return agg
-      }, [6])
+      }, [{
+        total: 0,
+      }])
 
       return {
         xAxis: {
@@ -64,7 +68,7 @@ export default {
                     color: 'rgba(0,0,0,0)'
                 }
             },
-            data: reduced
+            data: reduced.map(r => r.offset)
           },
           {
             type: 'bar',
