@@ -10,6 +10,7 @@
     "start:lambda": "netlify-lambda serve src/lambda"
   },
   "dependencies": {
+    "apollo-datasource-rest": "^0.3.2",
     "apollo-server-lambda": "^2.4.8",
     "bufferutil": "^4.0.1",
     "core-js": "^2.6.5",
