@@ -6,13 +6,15 @@
 import gql from 'graphql-tag'
 
 export default {
+  inject: ['global'],
+
   name: 'SupplyDemandChart',
 
   apollo: {
     baby: {
       query: gql`
-        query baby {
-          baby(id: "123") {
+        query baby($id: ID!) {
+          baby(id: $id) {
             babystats {
               date
               bOz
@@ -20,7 +22,15 @@ export default {
             }
           }
         }
-      `
+      `,
+      variables () {
+        return {
+          id: this.global.id
+        }
+      },
+      skip () {
+        return !this.global.id
+      }
     }
   },
 

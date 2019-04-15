@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <label>Baby ID: </label>
+    <input v-model="baby.id"/>
     <supply-demand-chart></supply-demand-chart>
   </div>
 </template>
@@ -9,7 +10,21 @@
   import SupplyDemandChart from './components/SupplyDemandChart'
 
   export default {
+    provide () {
+      return {
+        global: this.baby
+      }
+    },
+
     name: 'app',
+
+    data () {
+      return {
+        baby: {
+          id: null
+        }
+      }
+    },
 
     components: {
       SupplyDemandChart
