@@ -1,32 +1,35 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    {{ hello }}
+    <label>Baby ID: </label>
+    <input v-model="baby.id"/>
+    <supply-demand-chart></supply-demand-chart>
   </div>
 </template>
 
 <script>
-import gql from 'graphql-tag'
+  import SupplyDemandChart from './components/SupplyDemandChart'
 
-export default {
-  name: 'app',
+  export default {
+    provide () {
+      return {
+        global: this.baby
+      }
+    },
 
-  apollo: {
-    hello: {
-      query: gql`
-        query hello {
-          hello
+    name: 'app',
+
+    data () {
+      return {
+        baby: {
+          id: null
         }
-      `
-    }
-  },
+      }
+    },
 
-  data () {
-    return {
-      hello: ''
+    components: {
+      SupplyDemandChart
     }
   }
-}
 </script>
 
 <style>
